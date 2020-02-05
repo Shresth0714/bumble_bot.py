@@ -58,6 +58,8 @@ class Bumble():
             except Exception:
                 try:
                     self.close_match()
+                except:
+                    None
 
     def close_match(self):
         match_pop = self.driver.find_element_by_xpath('//*[@id="main"]/div/div[1]/main/div[2]/article/div/footer/div/div[2]/div/span/span/span')

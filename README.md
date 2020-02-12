@@ -1,3 +1,5 @@
+#This is a automation application that automates the entire workflow of bumble website app.
+
 To run this you need:
 Chromedriver download it from chromedriver.chromium.org
 

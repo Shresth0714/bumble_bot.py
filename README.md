@@ -1,10 +1,9 @@
-#This is a automation application that automates the entire workflow of bumble website app.
+This is an automation application that automates the entire workflow of the bumble website
 
-To run this you need:
-Chromedriver download it from chromedriver.chromium.org
+To run this you need: Chromedriver download it from chromedriver.chromium.org
 
-Use:
-pip install selenuim
+Import package Selenium
 
-And you need to create another file that contains your username and password for login.
-you can import by using "from file_name import Username, Password.
+Use: pip install selenium
+
+And you need to create another file that contains your username and password for login. you can import by using "from file_name import Username, Password.

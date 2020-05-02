@@ -16,8 +16,9 @@ class Bumble():
         log.click() #locating the login icon and clicking on it
 
         sleep(8)
-
-        log_fb = self.driver.find_element_by_xpath('//*[@id="main"]/div/div[1]/div[2]/main/div/div[2]/form/div[1]/div')
+        
+        #login with facebook id
+        log_fb = self.driver.find_element_by_xpath('//*[@id="main"]/div/div[1]/div[2]/main/div/div[2]/form/div[1]/div/div[2]/div/span/span[2]')
         log_fb.click() #locating the facebook login option and clicking on it
 
         self.driver.switch_to.window(self.driver.window_handles[1]) #move sceen to the fb login popup
@@ -43,20 +44,36 @@ class Bumble():
 
         sleep(5)
 
-    def like(self):  #creating like finctionality
-        like_bt = self.driver.find_element_by_xpath('//*[@id="main"]/div/div[1]/main/div[2]/div/div/span/div[2]/div/div[2]/div/div[2]/div/span/span')
+    #creating like function to swipe right
+    def like(self):
+        like_bt = self.driver.find_element_by_xpath('//*[@id="main"]/div/div[1]/main/div[2]/div/div/span/div[2]/div/div[2]/div/div[3]/div/span/span')
         like_bt.click()
+
+    #creating dislike function so that we dont like everyone in the list
+    def dislike(self):
+        dlike_bt = self.driver.find_element_by_xpath('//*[@id="main"]/div/div[1]/main/div[2]/div/div/span/div[2]/div/div[2]/div/div[1]/div/span/span')
+        dlike_bt.click()
          
-    def auto_swipe(self):  #creating an auto swipe loop for automating like option
+    def auto_swipe(self):
+        left_count, right_count = 0,0
         while True:
-            sleep(0.5)
+            sleep(random())
             try:
-                self.like()
+                rand = random()
+                if rand < .75:
+                    self.like()
+                    right_count = right_count + 1
+                    print('{} right swipe'.format(right_count))
+                else:
+                    self.dislike()
+                    left_count = left_count + 1
+                    print('{} left swipe'.format(left_count))
             except Exception:
                 try:
                     self.close_match()
                 except:
                     None
+    
 
     def close_match(self):   #handeling match exceptions
         match_pop = self.driver.find_element_by_xpath('//*[@id="main"]/div/div[1]/main/div[2]/article/div/footer/div/div[2]/div/span/span/span')
